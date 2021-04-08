@@ -16,11 +16,7 @@ def swap(l, x, y):
 def get_rand_index(x):
     return random.randint(0,x-1)
 
-def get_rand_indexes(count, x):
-    res = []
-    for i in count:
-        res.append(get_rand_index(x))
-    return res
+    
 
 l = [3,1,2,8]
 
