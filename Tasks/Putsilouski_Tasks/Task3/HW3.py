@@ -45,14 +45,6 @@ for y in range(len(string)):
 
 
 
-
-
-
-
-
-
-
-
         print(string_new)
 
 
