@@ -20,27 +20,71 @@ print(q)
 
 string = ['Произнеся', 'всю', 'эту', 'ахинею,', 'Бенгальский', 'сцепил', 'обе', 'руки', 'ладонь', 'к', 'ладони', 'и', 'приветственно', 'замахал', 'ими', 'в', 'прорез', 'занавеса,', 'от', 'чего', 'тот,', 'тихо', 'шумя,', 'и', 'разошелся', 'в', 'стороны.']
 
-
-
+string_new = ""
 for y in range(len(string)):
-    string_new = ""
-    if len(string_new) < q:
+
+    print(string_new)
+
+    if len(string_new) <= q:
         string_new = string_new + string[y] + " "
+
     else:
-        print(string_new)
-        string_new = string_new.replace((" " + string[y - 1] + " ", "",1))
+        string_new = string_new.replace(" " + string[y - 1] + " ", "")
+        print("Строка после добавления слов:", string_new)
+        ob = q - len(string_new)
+        print("Осталось добавить симолов:", ob)
+
+        sp = string_new.split(" ")
+        llen = 0
+        for z in range(len(sp)):
+            llen = llen + len(sp[z])
+        print("Всего текстовых символов:",llen)
+        dob = q - llen
+        print("Добавляем  пробелов:", dob)
+        i = 0
+        while (dob):
+            print(dob)
+            sp[i] = sp[i] + " "
+            dob = dob - 1
+            i = i+1
+            if i == (len(sp)-1): i=0
+        print(sp)
+
+
+
+
+
+        # print("Осталось", oct)
+
+        # for i in (oct-1):
+        #     sp[i] = sp[i]+" "
+        #
+        #     continue
+
+
+
+
+        break
+
+
 
 
         dob = q-len(string_new)
         while dob > 0:
-            z=0
-            for i in range(len(string_new)):
-                if dob == 0: break
-                if string_new[i+z] == " " and string_new[i] == " ":
-                    string_new[i+z] = "  "
-                    i = i + 1
-                    dob = dob - 1
-                    continue
+            sp =string_new.split(" ")
+            print(sp)
+
+
+
+            #
+            # z=0
+            # for i in range(len(string_new)):
+            #     if dob == 0: break
+            #     if string_new[i+z] == " " and string_new[i] == " ":
+            #         string_new[i+z] = "  "
+            #         i = i + 1
+            #         dob = dob - 1
+            #         continue
 
 
 
