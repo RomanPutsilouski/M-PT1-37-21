@@ -6,142 +6,111 @@
 
 
 q = int(input("количество символов:\n"))
-print(q)
-# with open('text.txt', 'r') as text:
-#     x = text.read()
-#     print(x,"\n")
-#     x = x.split("\n")
-#     print(x,"\n")
-#     for i in range(len(x)):
-#         print(i,":"+ x[i])
-#         string = x[i]
-#         string = string.split(" ")
-#         print(string)
 
-string = ['Произнеся', 'всю', 'эту', 'ахинею,', 'Бенгальский', 'сцепил', 'обе', 'руки', 'ладонь', 'к', 'ладони', 'и', 'приветственно', 'замахал', 'ими', 'в', 'прорез', 'занавеса,', 'от', 'чего', 'тот,', 'тихо', 'шумя,', 'и', 'разошелся', 'в', 'стороны.']
+with open('text.txt', 'r') as text:
+    x = text.read()
+    print(x,"\n")
+    x = x.split("\n")
+    print(x,"\n")
+    for i in range(len(x)):
+        print(i,":"+ x[i])
+        string = x[i]
+        string = string.split(" ")
+        print(string)
 
-string_new = ""
-for y in range(len(string)):
+# string = ['Произнеся', 'всю', 'эту', 'ахинею,', 'Бенгальский', 'сцепил', 'обе', 'руки', 'ладонь', 'к', 'ладони', 'и', 'приветственно', 'замахал', 'ими', 'в', 'прорез', 'занавеса,', 'от', 'чего', 'тот,', 'тихо', 'шумя,', 'и', 'разошелся', 'в', 'стороны.']
+        string_new = ""
+        ostatok = ""
+        for t in range(len(string)):
+            if t == int(len(string) - 1):
+                ostatok = ostatok + string[t]
+                break
+            ostatok = ostatok + string[t] + " "
+            ostatok_dl = len(ostatok)
 
-    print(string_new)
+        while(ostatok_dl>q):
+            print(ostatok_dl)
+            print(string)
+            string_new = ""
 
-    if len(string_new) <= q:
-        string_new = string_new + string[y] + " "
+            for y in range(len(string)+1):
+                if len(string_new) <= q:
+                    string_new = string_new + string[y] + " "
+                    print(string_new, q, len(string_new))
+                else:
+                    string_new = string_new.replace(" " + string[y - 1] + " ", "")
+                    sp = string_new.split(" ")
+                    string_new = ""
+                    for c in range(len(sp)):
+                        print(sp)
+                        print(sp[c])
+                        vrem = sp[c]
+                        print(vrem)
+                        print(string)
+                        string.remove(vrem)
+                    print("Строка после удаления записей", string)
 
-    else:
-        string_new = string_new.replace(" " + string[y - 1] + " ", "")
-        print("Строка после добавления слов:", string_new)
-        ob = q - len(string_new)
-        print("Осталось добавить симолов:", ob)
-
-        sp = string_new.split(" ")
-        llen = 0
-        for z in range(len(sp)):
-            llen = llen + len(sp[z])
-        print("Всего текстовых символов:",llen)
-        dob = q - llen
-        print("Добавляем  пробелов:", dob)
-        i = 0
-        while (dob):
-            print(dob)
-            sp[i] = sp[i] + " "
-            dob = dob - 1
-            i = i+1
-            if i == (len(sp)-1): i=0
-        print(sp)
-
-
-
-
-
-        # print("Осталось", oct)
-
-        # for i in (oct-1):
-        #     sp[i] = sp[i]+" "
-        #
-        #     continue
+                    ostatok = ""
+                    for t in range(len(string)):
+                        ostatok = ostatok + string[t] + " "
+                        ostatok_dl = (len(ostatok)-1)
+                    print("осталось1 в строке первоначальной", ostatok_dl)
 
 
 
 
-        break
 
 
 
 
-        dob = q-len(string_new)
-        while dob > 0:
-            sp =string_new.split(" ")
-            print(sp)
-
-
-
-            #
-            # z=0
-            # for i in range(len(string_new)):
-            #     if dob == 0: break
-            #     if string_new[i+z] == " " and string_new[i] == " ":
-            #         string_new[i+z] = "  "
-            #         i = i + 1
-            #         dob = dob - 1
-            #         continue
 
 
 
 
-        print(string_new)
 
 
-# for y in string:
-#     if len(string_new)<q:
-#         string_new = string_new+string[y]+" "
-#     else:
-#         print(string_new)
-#         string_new = string_new.replace(" "+string[y-1]+" ","")
-#
-#     continue
 
 
-# if string[q-1] == str(" "):
-#     print(i,":"+string[q-1])
+                    llen = 0
+                    for z in range(len(sp)):
+                        llen = llen + len(sp[z])
+                    dob = q - llen
+                    print("Добавляем  пробелов:", dob)
+                    i = 0
+        # Добавляем пробелы
+                    while (dob):
+
+                        if len(sp) == 1:
+                            sp[0] = sp[0] + " "
+                            dob = dob - 1
+                        else:
+                            sp[i] = sp[i] + " "
+                            dob = dob - 1
+                            i = i + 1
+                            if i == (len(sp) - 1): i = 0
+                        print(sp, type(sp))
+
+        # Переводим строку и записываем
+                    stroka = ""
+                    for p in range(len(sp)):
+                        stroka = stroka + sp[p]
+                    with open('text2.txt', 'a') as text_new:
+                        text_new.write(str(stroka) + "\n")
+                        text_new.close()
+                    break
+        else:
+            print("Осталось2", len(ostatok))
+            strochka =""
+            for r in range(len(string)):
+                strochka=strochka+string[r]+" "
+            with open('text2.txt', 'a') as text_new:
+                text_new.write(strochka + "\n")
+                text_new.close()
 
 
-#
-#
-#     != " ":
-# st_new = st[0:(q-1)]
-# st.replace(st[0:(q-1)],"")
-# print(st_new)
 
 
-# for line in text:
-#     line = line.split(" ")
-#     print(line)
 
 
-# for i in line:
-#     print(i)
-#     z = 0
-#     if int(z) < int(q):
-#         z = z+int(len(line[i]))+1
-#     else:
-#         for ns in (i-1):
-#             line_new = line_new+line[i]+" "
-#
-#         with open("text2.txt", "w") as text2:
-#             text2.write(line_new)
 
 
-#
-#
-# for i in range(len(line)):
-#     if i == q:
-#         if line[i]==" ":
-#             line[i] = "\n"
-#         else:
-#             for z in range ()
-#
-#         continue
-#
-#
-#
