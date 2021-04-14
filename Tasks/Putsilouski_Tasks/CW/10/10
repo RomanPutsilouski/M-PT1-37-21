@@ -1,0 +1,28 @@
+
+# def f(x):
+#     x[0]=x[0]+1
+#     print(x)
+#
+# x = [5]
+# f(x)
+# print(x)
+
+
+
+def bin(z,x,i,y):
+    i = (y-i)//2
+    print(i)
+    if x<z[i]:
+        y=i-1
+        i=y
+        bin(z, x, y, i)
+    else:
+        if z[i]==x: return (i)
+        i=i
+        y=
+        bin(z, x, y, i)
+
+z = [0,1,2,3,4,5,6,7,8]
+i=0
+y = len(z)-1
+print(bin(z,5,i,y))
