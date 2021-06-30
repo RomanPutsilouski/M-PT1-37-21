@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Latest articlies{% endblock %}
+
+{% block content %}
+  {% if latest_art_s %}
+
+    {% for a in latest_art_s %}
+
+      <a href="{% url 'art_s:detail' a.id %}" {{a.art_title}}></a>
+
+    {% endfor %}
+
+  {% else %}
+    ПУСТО!(=
+  {% endif %}
+{% endblock %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
